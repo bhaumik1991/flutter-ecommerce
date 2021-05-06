@@ -1,10 +1,10 @@
-import 'package:ecommerce/constant.dart';
-import 'package:ecommerce/screens/login.dart';
+import 'package:ecommerce/screens/register_user.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce/constant.dart';
 
-class RegisterUser extends StatefulWidget {
+class LogInUser extends StatefulWidget {
   @override
-  _RegisterUserState createState() => _RegisterUserState();
+  _LogInUserState createState() => _LogInUserState();
 }
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -12,7 +12,7 @@ String p = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\
 RegExp regExp = new RegExp(p);
 bool obsecureText = true;
 
-class _RegisterUserState extends State<RegisterUser> {
+class _LogInUserState extends State<LogInUser> {
 
   void validation(){
     final FormState _form = _formKey.currentState;
@@ -41,10 +41,10 @@ class _RegisterUserState extends State<RegisterUser> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                            "Register",
+                          "Login",
                           style: TextStyle(
-                            fontSize: 50,
-                            fontWeight: FontWeight.bold
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold
                           ),
                         ),
                       ],
@@ -58,25 +58,6 @@ class _RegisterUserState extends State<RegisterUser> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        TextFormField(
-                          decoration: InputDecoration(
-                            hintText: "Username",
-                            hintStyle: TextStyle(
-                              color: Colors.black
-                            ),
-                            suffixIcon: Icon(Icons.person),
-                            border: OutlineInputBorder()
-                          ),
-                          validator: (value){
-                            if(value.length < 6){
-                              return "Username is too short";
-                            } else if(value == ""){
-                              return "Please fill username";
-                            }
-                            return "";
-                          },
-                        ),
-
                         TextFormField(
                           decoration: InputDecoration(
                               hintText: "Email",
@@ -126,26 +107,6 @@ class _RegisterUserState extends State<RegisterUser> {
                             return "";
                           },
                         ),
-
-                        TextFormField(
-                          decoration: InputDecoration(
-                              hintText: "Phone Number",
-                              hintStyle: TextStyle(
-                                  color: Colors.black
-                              ),
-                              suffixIcon: Icon(Icons.phone),
-                              border: OutlineInputBorder()
-                          ),
-                          validator: (value){
-                            if(value == ""){
-                              return "Please enter phone number";
-                            }else if(value.length < 10){
-                              return "Invalid mobile number";
-                            }
-                            return "";
-                          },
-                        ),
-
                         Container(
                           height: 45,
                           width: double.infinity,
@@ -154,7 +115,7 @@ class _RegisterUserState extends State<RegisterUser> {
                                 validation();
                               },
                               child: Text(
-                                "Register"
+                                  "Login"
                               )
                           ),
                         ),
@@ -163,16 +124,16 @@ class _RegisterUserState extends State<RegisterUser> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                                "Already have an account?"
+                                "Don't have an account?"
                             ),
                             GestureDetector(
                               onTap: (){
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) => LogInUser()),
+                                  MaterialPageRoute(builder: (context) => RegisterUser()),
                                 );
                               },
                               child: Text(
-                                "Sign in",
+                                "Register",
                                 style: TextStyle(
                                     color: kPrimaryColor
                                 ),
